@@ -1,0 +1,60 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "css": "src/styles.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
+}
+export async function askAI(data: any, question: string) {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer SUA_OPENAI_API_KEY`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: `
+Você é um sistema de gestão urbana inteligente da Siga Verde.
+
+Você analisa dados de caminhões de coleta, bairros e rotas.
+
+Responda de forma curta, prática e útil para gestão pública.
+          `,
+        },
+        {
+          role: "user",
+          content: `
+DADOS DO SISTEMA:
+${JSON.stringify(data)}
+
+PERGUNTA:
+${question}
+          `,
+        },
+      ],
+      temperature: 0.4,
+    }),
+  });
+
+  const result = await response.json();
+  return result.choices[0].message.content;
+}
