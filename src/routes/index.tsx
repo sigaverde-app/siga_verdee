@@ -30,10 +30,9 @@ function Home() {
               <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-semibold text-eco-deep shadow-soft">
                 <Sparkles className="h-3.5 w-3.5" /> Smart City · GovTech Sustentável
               </div>
-              <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-                Veja onde está a coleta{" "}
-                <span className="text-gradient-eco">em tempo real.</span>
-              </h1>
+              <h1 className="...">
+  TESTE VERCEL 123456
+</h1>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
                 Acompanhe os caminhões da coleta urbana e participe de uma cidade mais limpa e sustentável.
                 Transparência pública, tecnologia inteligente e consciência ambiental em uma única plataforma.
